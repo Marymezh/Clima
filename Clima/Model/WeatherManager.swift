@@ -16,7 +16,9 @@ struct WeatherManager {
     let weatherURL = "https://api.openweathermap.org/data/2.5/find?appid=10fec9b6798b0c5d2539db70285c3845&units=metric"
     
     func fetchWeather(cityName: String) {
-        let urlString = "\(weatherURL)&q=\(cityName)"
+        
+        let cityEddited = cityName.replacingOccurrences(of: " ", with: "%20")
+        let urlString = "\(weatherURL)&q=\(cityEddited)"
         performRequest(with: urlString)
         print (urlString)
     }
